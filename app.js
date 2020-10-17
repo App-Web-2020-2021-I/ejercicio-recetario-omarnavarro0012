@@ -143,7 +143,7 @@ $(document).ready(function() {
             ingredientesF,
             descripcion,
             id:Date.now()
-        }
+        };
 
         agregarReceta(categoria,receta);
         if(categoria === "Entrada")
