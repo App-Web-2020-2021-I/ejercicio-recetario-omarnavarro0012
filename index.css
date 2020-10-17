@@ -1,0 +1,16 @@
+body {
+    background-image: url("./assets/img/fondo2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#addform{
+    color: rgb(47, 0, 255);
+    font-size: 16px;
+    font: italic;
+    -webkit-text-stroke: .5px;        
+    -webkit-text-stroke-color:#00eeff;
+
+}
