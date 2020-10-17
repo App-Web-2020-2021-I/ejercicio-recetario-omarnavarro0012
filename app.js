@@ -6,7 +6,7 @@ function agregarIngrediente(nombre) {
         <li class="list-group-item">
             <div class="row">
                 <div class="col-1 mr-1">
-                    <button class="btn btn-danger">&times;</button>
+                    <button class="btn btn-danger" id="${nombre}">&times;</button>
                 </div>
                 <div class="col-9 ml-2">
                     <h4 class="display-4" 
@@ -23,6 +23,8 @@ function borrarIngredientes() {
     var html = "";
     $("#listaIngredientes").html(html);
 }
+
+
 
 function agregarReceta(tipo,receta) {
 
@@ -82,6 +84,7 @@ function muestraAlerta( mensaje ) {
 
 $(document).ready(function() {
     $("#alerta").hide(0);
+    $("#Receta").hide(0);
     
     var ingredientes=[];
     var Entradas=[];
@@ -96,8 +99,7 @@ $(document).ready(function() {
         $("#ingredienteNuevo").val("");
         console.log(ingredientes);
     });
-    
-    
+
     
     $("#addform").submit( function(e){
         e.preventDefault();
