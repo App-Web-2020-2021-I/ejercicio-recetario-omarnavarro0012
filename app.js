@@ -1,3 +1,6 @@
+    var Entradas=[];
+    var Principals=[];
+    var Postres=[];
 
 function agregarIngrediente(nombre) {
 
@@ -66,7 +69,7 @@ function agregarReceta(tipo,receta) {
                         <img src="${receta.imagen}" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title">${receta.nombre}</h5>
-                        <button class="btn btn-outline-primary" id="boton+${receta.id}">Mostrar</button>
+                        <button class="btn btn-outline-primary" onclick="MostrarReceta(${receta.categoria},${receta.id})" id="boton+${receta.id}">Mostrar</button>
                         </div>
                     </div>
                 ` ;
@@ -82,14 +85,95 @@ function muestraAlerta( mensaje ) {
     $("#alerta").show(1000);
 }
 
+function MostrarReceta(cat,id) {
+
+    console.log("Muestra receta");
+    if(cat==="Entrada")
+    {
+        var receE = Entradas.find( receta  => receta.id === id);
+
+        var htmlE=
+        `
+        <div class="col align-self-center">
+        <div class="card" style="height: 250px; width: 250px;">
+            <img src="${receE.imagen}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${receE.nombre}</h5>
+            </div>
+            <ul class="list-group list-group-flush" id="ingredientesReceta">
+              <li class="list-group-item">${receE.ingredientes.forEach()}</li>
+            </ul>
+            <div class="card-body">
+              <p id="descripcionReceta">${receE.descripcion}</p>
+            </div>
+          </div>
+      </div>
+        ` ;
+        $("#receta").html(htmlE);
+
+    }
+    if(cat==="Plato Principal")
+    {
+        var receP = Principals.find( receta  => receta.id === id);
+
+        var htmlP=
+        `
+        <div class="col align-self-center">
+        <div class="card" style="height: 250px; width: 250px;">
+            <img src="${receP.imagen}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${receP.nombre}</h5>
+            </div>
+            <ul class="list-group list-group-flush" id="ingredientesReceta">
+              <li class="list-group-item">${receP.ingredientes.forEach()}</li>
+            </ul>
+            <div class="card-body">
+              <p id="descripcionReceta">${receP.descripcion}</p>
+            </div>
+          </div>
+      </div>
+        ` ;
+        $("#receta").html(htmlP);
+    }
+    if(cat==="Postre")
+    {
+        var recePos = Postres.find( receta  => receta.id === id);
+
+        var htmlPos=
+        `
+        <div class="col align-self-center">
+        <div class="card" style="height: 250px; width: 250px;">
+            <img src="${recePos.imagen}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${recePos.nombre}</h5>
+            </div>
+            <ul class="list-group list-group-flush" id="ingredientesReceta">
+              <li class="list-group-item">${recePos.ingredientes.forEach()}</li>
+            </ul>
+            <div class="card-body">
+              <p id="descripcionReceta">${recePos.descripcion}</p>
+            </div>
+          </div>
+      </div>
+        ` ;
+        $("#receta").html(htmlPos);
+    }
+
+
+
+   
+
+
+    $("#Receta").show();
+    $("#Menu").hide(0);
+}
+
 $(document).ready(function() {
     $("#alerta").hide(0);
     $("#Receta").hide(0);
     
     var ingredientes=[];
-    var Entradas=[];
-    var Principals=[];
-    var Postres=[];
+    
     
     
     $("#addform #botonadd").click(function() {
